@@ -21,12 +21,12 @@ const lista_produtos = {
 //--- CRUD de Produtos ---//
 
 // Get All - Produtos
-app.get ('/produtos', function (req, res) {
+app.get ('/api/v1/produtos', function (req, res) {
     res.status(200).send(lista_produtos);
 })
 
 // Get by id - Produtos
-app.get ('/produtos/:id', function (req, res) {
+app.get ('/api/v1/produtos/:id', function (req, res) {
     const id = Number(req?.params?.id);
     const produto = lista_produtos.produtos.find(produto => produto.id === id);
 
@@ -38,7 +38,7 @@ app.get ('/produtos/:id', function (req, res) {
 })
 
 // Create - Produtos
-app.post ('/produtos', (req, res) => {
+app.post ('/api/v1/produtos', (req, res) => {
     const produto = req.body;
     produto.id = getUltimoProduto().id + 1
     lista_produtos.produtos.push(produto)
@@ -46,7 +46,7 @@ app.post ('/produtos', (req, res) => {
 })
 
 // Update - Produtos
-app.put('/produtos/:id', (req, res) => {
+app.put('/api/v1/produtos/:id', (req, res) => {
     const id = Number(req.params.id);
     const produtoIndex = lista_produtos.produtos.findIndex(produto => produto.id === id);
 
@@ -59,7 +59,7 @@ app.put('/produtos/:id', (req, res) => {
 })
 
 // Delete - Produtos
-app.delete('/produtos/:id', (req, res) => {
+app.delete('/api/v1/produtos/:id', (req, res) => {
     const id = Number(req.params.id);
     const produtoIndex = lista_produtos.produtos.findIndex(produto => produto.id === id);
 
