@@ -2,6 +2,13 @@
 const express = require ('express')
 const bodyParser = require('body-parser')
 
+const https = require('https');
+const fs = require('fs');
+const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/projetonode.vps.webdock.cloud/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/projetonode.vps.webdock.cloud/fullchain.pem')
+};
+
 // Inicializa um objeto de aplicação Express e configura o body parse
 const app = express ()
 app.use(bodyParser.json())
