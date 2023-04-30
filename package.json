@@ -1,0 +1,25 @@
+{
+  "name": "puc-minas-projeto-node",
+  "version": "1.0.0",
+  "description": "Trabalho da disciplina de Node.js",
+  "main": "server-express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server-express.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roberto-silva/puc-minas-projeto-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roberto-silva/puc-minas-projeto-node/issues"
+  },
+  "homepage": "https://github.com/roberto-silva/puc-minas-projeto-node#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}
