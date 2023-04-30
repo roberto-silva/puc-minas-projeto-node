@@ -11,12 +11,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/produtos",
+					"raw": "localhost:3000/api/v1/produtos",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
+						"v1",
 						"produtos"
 					]
 				}
@@ -29,12 +31,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/produtos/1",
+					"raw": "localhost:3000/api/v1/produtos/1",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
+						"v1",
 						"produtos",
 						"1"
 					]
@@ -57,12 +61,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/produtos",
+					"raw": "localhost:3000/api/v1/produtos",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
+						"v1",
 						"produtos"
 					]
 				}
@@ -84,12 +90,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/produtos/6",
+					"raw": "localhost:3000/api/v1/produtos/6",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
+						"v1",
 						"produtos",
 						"6"
 					]
@@ -103,14 +111,16 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/produtos/7",
+					"raw": "localhost:3000/api/v1/produtos/6",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
+						"v1",
 						"produtos",
-						"7"
+						"6"
 					]
 				}
 			},
