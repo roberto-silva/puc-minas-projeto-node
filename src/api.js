@@ -1,16 +1,11 @@
 // Importa o módulo do Express Framework e o body parse
 const express = require ('express')
 const bodyParser = require('body-parser')
-
-const https = require('https');
-const fs = require('fs');
-const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/projetonode.vps.webdock.cloud/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/projetonode.vps.webdock.cloud/fullchain.pem')
-};
+const serverless = require("serverless-http");
 
 // Inicializa um objeto de aplicação Express e configura o body parse
 const app = express ()
+const router = express.Router();
 app.use(bodyParser.json())
 
 // Banco de dados fake
@@ -27,12 +22,12 @@ const lista_produtos = {
 //--- CRUD de Produtos ---//
 
 // Get All - Produtos
-app.get ('/produtos', function (req, res) {
+router.get ('/produtos', function (req, res) {
     res.status(200).send(lista_produtos);
 })
 
 // Get by id - Produtos
-app.get ('/produtos/:id', function (req, res) {
+router.get ('/produtos/:id', function (req, res) {
     const id = Number(req?.params?.id);
     const produto = lista_produtos.produtos.find(produto => produto.id === id);
 
@@ -44,7 +39,7 @@ app.get ('/produtos/:id', function (req, res) {
 })
 
 // Create - Produtos
-app.post ('/produtos', (req, res) => {
+router.post ('/produtos', (req, res) => {
     const produto = req.body;
     produto.id = getUltimoProduto().id + 1
     lista_produtos.produtos.push(produto)
@@ -52,7 +47,7 @@ app.post ('/produtos', (req, res) => {
 })
 
 // Update - Produtos
-app.put('/produtos/:id', (req, res) => {
+router.put('/produtos/:id', (req, res) => {
     const id = Number(req.params.id);
     const produtoIndex = lista_produtos.produtos.findIndex(produto => produto.id === id);
 
@@ -65,7 +60,7 @@ app.put('/produtos/:id', (req, res) => {
 })
 
 // Delete - Produtos
-app.delete('/produtos/:id', (req, res) => {
+router.delete('/produtos/:id', (req, res) => {
     const id = Number(req.params.id);
     const produtoIndex = lista_produtos.produtos.findIndex(produto => produto.id === id);
 
@@ -77,7 +72,7 @@ app.delete('/produtos/:id', (req, res) => {
     }
 })
 
-app.use (function (req, res) {
+router.use (function (req, res) {
     res.status(404).send('Recurso não encontrado.')
 })
 
@@ -89,6 +84,7 @@ function getUltimoProduto() {
     return lista_produtos.produtos[lista_produtos.produtos.length -1]
 }
 
+app.use(`/.netlify/functions/api`, router);
 // Inicializa o servidor HTTP na porta 3000
 app.listen (3000, function () {
   console.log ('Servidor rodando na porta 3000')
