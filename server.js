@@ -26,16 +26,16 @@ app.post ('/api/v1/animes', (req, res) => {
     knex('animes').insert(req.body, ['id'])
         .then(animes => {
             let id = animes[0].id;
-            res.json({message: `Anime inserido com sucesso.`, id})
+            res.status(201).json({message: `Anime inserido com sucesso.`, id})
         })
-        .catch(err => res.json({message: `Erro ao inserir anime.: ${err.message}`}))
+        .catch(err => res.status(500).json({message: `Erro ao inserir anime.: ${err.message}`}))
 })
 
 // Get All - Animes
 app.get ('/api/v1/animes', function (req, res) {
     knex.select('*').from('animes')
-        .then(animes => res.json(animes))
-        .catch(err => res.json({message: `Erro ao recuperar animes.: ${err.message}`}));
+        .then(animes => res.status(200).json(animes))
+        .catch(err => res.status(500).json({message: `Erro ao recuperar animes.: ${err.message}`}));
 })
 
 // Get by id - Animes
@@ -44,11 +44,11 @@ app.get ('/api/v1/animes/:id', function (req, res) {
     knex.select('*').from('animes').where({id})
         .then(animes => {
             if(!!animes[0]){
-                return res.json(animes);
+                return res.status(200).json(animes);
             }
             return res.status(404).send("Anime não encontrado");
         })
-        .catch(err => res.json({message: `Erro ao recuperar animes.: ${err.message}`}));
+        .catch(err => res.status(500).json({message: `Erro ao recuperar animes.: ${err.message}`}));
 })
 
 // Update - Animes
@@ -57,9 +57,9 @@ app.put('/api/v1/animes/:id', (req, res) => {
     knex('animes').update(req.body, ['id']).where({id})
         .then(animes => {
             let id = animes[0].id;
-            res.json({message: `Anime atualizado com sucesso.`, id})
+            res.status(200).json({message: `Anime atualizado com sucesso.`, id})
         })
-        .catch(err => res.json({message: `Erro ao atualizar anime.: ${err.message}`}))
+        .catch(err => res.status(500).json({message: `Erro ao atualizar anime.: ${err.message}`}))
 })
 
 // Delete - Animes
@@ -67,9 +67,9 @@ app.delete('/api/v1/animes/:id', (req, res) => {
     const id = Number(req.params.id);
     knex('animes').delete().where({id})
         .then(() => {
-            res.json({message: `Anime deletado com sucesso.`, id})
+            res.status(200).json({message: `Anime deletado com sucesso.`, id})
         })
-        .catch(err => res.json({message: `Erro ao deletar anime.: ${err.message}`}))
+        .catch(err => res.status(500).json({message: `Erro ao deletar anime.: ${err.message}`}))
 })
 
 app.use (function (req, res) {
