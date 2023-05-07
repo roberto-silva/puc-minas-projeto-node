@@ -42,14 +42,19 @@ app.get ('/api/v1/animes', function (req, res) {
 app.get ('/api/v1/animes/:id', function (req, res) {
     const id = Number(req?.params?.id);
     knex.select('*').from('animes').where({id})
-        .then(animes => res.json(animes))
-        .catch(err => res.status(404).json({message: `Erro ao recuperar animes.: ${err.message}`}));
+        .then(animes => {
+            if(!!animes[0]){
+                return res.json(animes);
+            }
+            return res.status(404).send("Anime não encontrado");
+        })
+        .catch(err => res.json({message: `Erro ao recuperar animes.: ${err.message}`}));
 })
 
 // Update - Animes
 app.put('/api/v1/animes/:id', (req, res) => {
     const id = Number(req.params.id);
-    knex('animes').delete(req.body, ['id']).where({id})
+    knex('animes').update(req.body, ['id']).where({id})
         .then(animes => {
             let id = animes[0].id;
             res.json({message: `Anime atualizado com sucesso.`, id})

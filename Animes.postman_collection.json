@@ -11,11 +11,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/v1/animes",
+					"raw": "https://projeto-node-roberto-bd-knex.onrender.com/api/v1/animes",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"projeto-node-roberto-bd-knex",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -31,11 +33,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/v1/animes/2",
+					"raw": "https://projeto-node-roberto-bd-knex.onrender.com/api/v1/animes/2",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"projeto-node-roberto-bd-knex",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -61,11 +65,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/animes",
+					"raw": "https://projeto-node-roberto-bd-knex.onrender.com/api/v1/animes",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"projeto-node-roberto-bd-knex",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
@@ -82,7 +88,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Dragon Ball Z\",\r\n    \"description\": \"Dragon Ball é uma franquia de mídia japonesa criada por Akira Toriyama. Originalmente iniciada com uma série de mangá escrita e ilustrada por Toriyama, foi serializada em capítulos na revista Weekly Shonen Jump de 1984 a 1995. Os 519 capítulos foram compilados em 42 volumes tankōbon e publicados pela editora Shueisha.\",\r\n    \"creatorName\": \"Akira Toriyama\",\r\n    \"category\": \"Ação\"\r\n}",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Dragon Ball Z\",\r\n    \"description\": \"Dragon Ball é uma franquia de mídia japonesa criada por Akira Toriyama. Originalmente iniciada com uma série de mangá escrita e ilustrada por Toriyama, foi serializada em capítulos na revista Weekly Shonen Jump de 1984 a 1995. Os 519 capítulos foram compilados em 42 volumes tankōbon e publicados pela editora Shueisha.\",\r\n    \"creatorName\": \"Akira Toriyama\",\r\n    \"category\": \"Ação\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -90,16 +96,18 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/api/v1/animes/2",
+					"raw": "https://projeto-node-roberto-bd-knex.onrender.com/api/v1/animes/{id}",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"projeto-node-roberto-bd-knex",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
 						"animes",
-						"2"
+						"{id}"
 					]
 				}
 			},
@@ -111,16 +119,18 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/api/v1/animes/2",
+					"raw": "https://projeto-node-roberto-bd-knex.onrender.com/api/v1/animes/5",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"projeto-node-roberto-bd-knex",
+						"onrender",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"api",
 						"v1",
 						"animes",
-						"2"
+						"5"
 					]
 				}
 			},
